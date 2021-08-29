@@ -52,7 +52,6 @@ npx hardhat test
 
 ---
 
-- Simulation for addAllocation() and transferMany() Methods based arrays of 100 addresses
 
 ![](./gasreporter.png)
 
