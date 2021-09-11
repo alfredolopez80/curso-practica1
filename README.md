@@ -1,4 +1,4 @@
-# Course Blockchain / First Practice 1
+# Course Blockchain / Second Practice 2
 
 Before to Start
 
