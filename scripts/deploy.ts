@@ -3,7 +3,8 @@
 //
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-import { run, ethers } from "hardhat";
+import { run, ethers} from "hardhat";
+import { BigNumber } from 'ethers';
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -16,12 +17,25 @@ async function main() {
 	const accounts = await ethers.getSigners();
 
   // We get the contract to deploy
-  const Greeter = await ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat");
+  const Practica = await ethers.getContractFactory("Practica");
+  const practica = await Practica.deploy();
 
-  await greeter.deployed();
 
-  console.log("Greeter deployed to:", greeter.address);
+
+  await practica.deployed();
+
+  console.log("Practica deployed to:", practica.address);
+
+	console.log ("Obtener Memoria Externa", await practica.getStorage());
+
+	const flag:boolean = true;
+
+	console.log ("Obtener Memoria Interna Antes", await practica.getMemoria());
+
+	const result:any = await practica.setMemoria(flag, 15, '15', '0x0000000000000000000000000000000000000000');
+
+	console.log ("Obtener Memoria Interna Despues", await practica.getMemoria());
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
